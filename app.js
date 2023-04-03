@@ -11,7 +11,7 @@ mongoose.connect(process.env.DATABASE_URL,
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
-
+  
 app.use(express.json());    // pour gérer requète POST, donne le body des requêtes "application/json" sur req
 
 
