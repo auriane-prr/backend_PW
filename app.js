@@ -15,6 +15,7 @@ mongoose.connect(process.env.DATABASE_URL,
   
 app.use(express.json());    // pour gérer requète POST, donne le body des requêtes "application/json" sur req
 
+// METHODE CRUD : post/put/delete/get
 
 // header permettant d'accéder à l'API depuis n'importe où
 // ajoute les headers mentionnés aux requêtes envoyées vers l'API
@@ -45,6 +46,14 @@ app.post('/api/stuff', (req, res, next) => {
 app.put('/api/stuff/:id', (req, res, next) => {
   Thing.updateOne({ _id: req.params.id }, { ...req.body, _id: req.params.id })
     .then(() => res.status(200).json({ message: 'Objet modifié !'}))
+    .catch(error => res.status(400).json({ error }));
+});
+
+//                                  ROUTE DELETE
+
+app.delete('/api/stuff/:id', (req, res, next) => {
+  Thing.deleteOne({ _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Objet supprimé !'}))
     .catch(error => res.status(400).json({ error }));
 });
 
