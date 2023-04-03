@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const app = express();
+const Thing = require('./models/things');
 
 mongoose.connect(process.env.DATABASE_URL,
   { useNewUrlParser: true,
@@ -29,11 +30,14 @@ app.use((req, res, next) => {
 //                                  ROUTE POST
 
 app.post('/api/stuff', (req, res, next) => {
-    console.log(req.body);
-    res.status(201).json({
-      message: 'Objet créé !'
-    });
+  delete req.body._id;
+  const thing = new Thing({
+    ...req.body
   });
+  thing.save()
+    .then(() => res.status(201).json({ message: 'Objet enregistré !'}))
+    .catch(error => res.status(400).json({ error }));
+});
 
   
 //                                  ROUTE GET
