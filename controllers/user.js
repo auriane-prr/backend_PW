@@ -8,7 +8,12 @@ exports.signup = (req, res, next) => {  //ajout user dans bd
         .then(hash => {     // crypte le mdp
             const user = new User({
                 email: req.body.email,
-                password: hash
+                password: hash,
+                numuser: req.body.numuser,
+                pseudo: req.body.pseudo,
+                premium: req.body.premium,
+                loc: req.body.loc,
+                nbpoint: req.body.nbpoint,
             });
             user.save() // enregistre le nouvel utilisateur
                 .then(() => res.status(201).json({ message: 'Utilisateur crée'}))
