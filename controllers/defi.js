@@ -1,9 +1,8 @@
-const defi = require('../models/defi');
 const Defi = require('../models/defi');
 
 // if user.Admin == true
 exports.createDefi = (req, res, next) => {
-  const event = new Event({
+  const defi = new Defi({
     num_defi: req.body.num_defi,
     nom_defi: req.body.nom_defi,
     date_deb: req.body.date_deb,
