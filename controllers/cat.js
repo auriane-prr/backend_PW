@@ -61,8 +61,6 @@ exports.modifyCat = (req, res, next) => {
 };
 
 exports.deleteCat = (req, res, next) => {
-
-    // if date_fin >= current date => delete
   Cat.deleteOne({_id: req.params.id}).then(
     () => {
       res.status(200).json({

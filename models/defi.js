@@ -8,7 +8,7 @@ const defiSchema = mongoose.Schema({
   description: { type: String, required: true },
   point: { type: Number, required: true },
   //num_user: { type: mongoose.Schema.ObjectId, ref: './user',required: true },
- // num_cat: { type: mongoose.Schema.ObjectId, ref: '',required: true } 
+ // num_cat: { type: mongoose.Schema.ObjectId, ref: './cat',required: true } 
 });
 
 module.exports = mongoose.model('Defi', defiSchema);

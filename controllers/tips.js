@@ -61,8 +61,6 @@ exports.modifyTips = (req, res, next) => {
 };
 
 exports.deleteTips = (req, res, next) => {
-
-    // if date_fin >= current date => delete
   Tips.deleteOne({_id: req.params.id}).then(
     () => {
       res.status(200).json({
