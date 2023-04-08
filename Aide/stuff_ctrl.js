@@ -1,4 +1,4 @@
-const Thing = require('../models/thing');
+const Thing = require('./thing_mod');
 
 exports.createThing = (req, res, next) => {
   const thing = new Thing({
@@ -6,7 +6,7 @@ exports.createThing = (req, res, next) => {
     description: req.body.description,
     imageUrl: req.body.imageUrl,
     price: req.body.price,
-    userId: req.body.userId
+    
   });
   thing.save().then(
     () => {

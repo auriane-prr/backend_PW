@@ -2,7 +2,7 @@ const express = require('express');
 const auth = require('../middleware/auth');
 const router = express.Router();
 
-const stuffCtrl = require('../controllers/stuff');
+const stuffCtrl = require('./stuff_ctrl');
 
 router.get('/', auth, stuffCtrl.getAllStuff);
 router.post('/', auth, stuffCtrl.createThing);

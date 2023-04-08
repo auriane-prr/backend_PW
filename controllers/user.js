@@ -9,11 +9,11 @@ exports.signup = (req, res, next) => {  //ajout user dans bd
             const user = new User({
                 email: req.body.email,
                 password: hash,
-                numuser: req.body.numuser,
+                num_user: req.body.num_user,
                 pseudo: req.body.pseudo,
                 premium: req.body.premium,
                 loc: req.body.loc,
-                nbpoint: req.body.nbpoint,
+                nb_point: req.body.nb_point,
             });
             user.save() // enregistre le nouvel utilisateur
                 .then(() => res.status(201).json({ message: 'Utilisateur crée'}))

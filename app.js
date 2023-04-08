@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 
-const stuffRoutes = require('./routes/stuff');
+const eventRoutes = require('./routes/event');
 const userRoutes = require('./routes/user');
 
 mongoose.connect(process.env.DATABASE_URL,
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(express.json());    // pour gérer requète POST, donne le body des requêtes "application/json" sur req
 
-app.use('/api/stuff', stuffRoutes);
+app.use('/api/event', eventRoutes);
 app.use('./api/auth', userRoutes);
 
 module.exports = app;
