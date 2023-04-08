@@ -11,7 +11,7 @@ exports.signup = (req, res, next) => {  //ajout user dans bd
                 password: hash,
                 num_user: req.body.num_user,
                 pseudo: req.body.pseudo,
-                premium: req.body.premium,
+                admin: req.body.admin,
                 loc: req.body.loc,
                 nb_point: req.body.nb_point,
             });

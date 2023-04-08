@@ -1,23 +1,19 @@
-const Event = require('../models/event');
+const Defi = require('../models/defi');
 
 // if user.Admin == true
-exports.createEvent = (req, res, next) => {
+exports.createDefi = (req, res, next) => {
   const event = new Event({
-    num_event: req.body.num_event,
-    nom_event: req.body.nom_event,
-    adresse: req.body.adresse,
-    place: req.body.place,
+    num_defi: req.body.num_defi,
+    nom_defi: req.body.nom_defi,
     date_deb: req.body.date_deb,
     date_fin: req.body.date_fin,
     description: req.body.description,
-    point: req.body.point,
-    link:req.body.link,
-    
+    point: req.body.point,    
   });
   thing.save().then(
     () => {
       res.status(201).json({
-        message: 'Event created successfully!'
+        message: 'Defi created successfully!'
       });
     }
   ).catch(
@@ -29,12 +25,12 @@ exports.createEvent = (req, res, next) => {
   );
 };
 
-exports.getOneEvent = (req, res, next) => {
-  Event.findOne({
+exports.getOneDefi = (req, res, next) => {
+  Defi.findOne({
     _id: req.params.id
   }).then(
-    (event) => {
-      res.status(200).json(event);
+    (defi) => {
+      res.status(200).json(defi);
     }
   ).catch(
     (error) => {
@@ -46,22 +42,19 @@ exports.getOneEvent = (req, res, next) => {
 };
 
 // if user.Admin == true
-exports.modifyEvent = (req, res, next) => {
-  const event = new Event({
-    num_event: req.body.num_event,
-    nom_event: req.body.nom_event,
-    adresse: req.body.adresse,
-    place: req.body.place,
+exports.modifyDefi = (req, res, next) => {
+  const defi = new Defi({
+    num_defi: req.body.num_defi,
+    nom_defi: req.body.nom_defi,
     date_deb: req.body.date_deb,
     date_fin: req.body.date_fin,
     description: req.body.description,
-    point: req.body.point,
-    link:req.body.link,
+    point: req.body.point, 
   });
-  Event.updateOne({_id: req.params.id}, event).then(
+  Defi.updateOne({_id: req.params.id}, defi).then(
     () => {
       res.status(201).json({
-        message: 'Event updated successfully!'
+        message: 'Defi updated successfully!'
       });
     }
   ).catch(
@@ -73,10 +66,10 @@ exports.modifyEvent = (req, res, next) => {
   );
 };
 
-exports.deleteEvent = (req, res, next) => {
+exports.deleteDefi = (req, res, next) => {
 
     // if date_fin >= current date => delete
-  Event.deleteOne({_id: req.params.id}).then(
+  Defi.deleteOne({_id: req.params.id}).then(
     () => {
       res.status(200).json({
         message: 'Deleted!'
@@ -91,10 +84,10 @@ exports.deleteEvent = (req, res, next) => {
   );
 };
 
-exports.getAllEvent = (req, res, next) => {
-  Event.find().then(
-    (event) => {
-      res.status(200).json(event);
+exports.getAllDefi = (req, res, next) => {
+  Defi.find().then(
+    (defi) => {
+      res.status(200).json(defi);
     }
   ).catch(
     (error) => {

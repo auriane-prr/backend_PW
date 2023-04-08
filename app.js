@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 
 const eventRoutes = require('./routes/event');
 const userRoutes = require('./routes/user');
+const defiRoutes = require('./routes/defi');
 
 mongoose.connect(process.env.DATABASE_URL,
   { useNewUrlParser: true,
@@ -33,5 +34,6 @@ app.use(express.json());    // pour gérer requète POST, donne le body des requ
 
 app.use('/api/event', eventRoutes);
 app.use('./api/auth', userRoutes);
+app.use('/api/defi', defiRoutes);
 
 module.exports = app;
