@@ -5,7 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-
+const tipsRoutes = require('./routes/tips');
 const eventRoutes = require('./routes/event');
 const userRoutes = require('./routes/user');
 const defiRoutes = require('./routes/defi');
@@ -35,5 +35,6 @@ app.use(express.json());    // pour gérer requète POST, donne le body des requ
 app.use('/api/event', eventRoutes);
 app.use('./api/auth', userRoutes);
 app.use('/api/defi', defiRoutes);
+app.use('/api/tips', tipsRoutes);
 
 module.exports = app;

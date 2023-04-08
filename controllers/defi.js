@@ -1,3 +1,4 @@
+const defi = require('../models/defi');
 const Defi = require('../models/defi');
 
 // if user.Admin == true
@@ -10,7 +11,7 @@ exports.createDefi = (req, res, next) => {
     description: req.body.description,
     point: req.body.point,    
   });
-  thing.save().then(
+  defi.save().then(
     () => {
       res.status(201).json({
         message: 'Defi created successfully!'

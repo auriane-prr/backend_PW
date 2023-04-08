@@ -14,7 +14,7 @@ exports.createEvent = (req, res, next) => {
     link:req.body.link,
     
   });
-  thing.save().then(
+  event.save().then(
     () => {
       res.status(201).json({
         message: 'Event created successfully!'
