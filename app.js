@@ -9,7 +9,6 @@ const tipsRoutes = require('./routes/tips');
 const eventRoutes = require('./routes/event');
 const userRoutes = require('./routes/user');
 const defiRoutes = require('./routes/defi');
-const catRoutes = require('./routes/cat');
 const chatRoutes = require('./routes/chat');
 
 mongoose.connect(process.env.DATABASE_URL,
@@ -38,7 +37,6 @@ app.use('/api/event', eventRoutes);
 app.use('./api/auth', userRoutes);
 app.use('/api/defi', defiRoutes);
 app.use('/api/tips', tipsRoutes);
-app.use('/api/cat', catRoutes);
 app.use('/api/chat', chatRoutes);
 
 module.exports = app;
