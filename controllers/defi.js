@@ -13,7 +13,7 @@ exports.createDefi = (req, res, next) => {
   defi.save().then(
     () => {
       res.status(201).json({
-        message: 'Defi created successfully!'
+        message: "Defi created successfully!"
       });
     }
   ).catch(
@@ -54,7 +54,7 @@ exports.modifyDefi = (req, res, next) => {
   Defi.updateOne({_id: req.params.id}, defi).then(
     () => {
       res.status(201).json({
-        message: 'Defi updated successfully!'
+        message: "Defi updated successfully!"
       });
     }
   ).catch(
@@ -72,7 +72,7 @@ exports.deleteDefi = (req, res, next) => {
   Defi.deleteOne({_id: req.params.id}).then(
     () => {
       res.status(200).json({
-        message: 'Deleted!'
+        message: "Deleted!"
       });
     }
   ).catch(

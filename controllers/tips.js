@@ -10,7 +10,7 @@ exports.createTips = (req, res, next) => {
   tips.save().then(
     () => {
       res.status(201).json({
-        message: 'Tips created successfully!'
+        message: "Tips created successfully!"
       });
     }
   ).catch(
@@ -48,7 +48,7 @@ exports.modifyTips = (req, res, next) => {
   Tips.updateOne({_id: req.params.id}, tips).then(
     () => {
       res.status(201).json({
-        message: 'Tips updated successfully!'
+        message: "Tips updated successfully!"
       });
     }
   ).catch(
@@ -64,7 +64,7 @@ exports.deleteTips = (req, res, next) => {
   Tips.deleteOne({_id: req.params.id}).then(
     () => {
       res.status(200).json({
-        message: 'Deleted!'
+        message: "Deleted!"
       });
     }
   ).catch(

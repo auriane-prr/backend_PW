@@ -1,5 +1,6 @@
 // user : auriane - mdp cluster : btstjd7
 require('dotenv').config();
+const cors = require('cors');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -19,6 +20,8 @@ mongoose.connect(process.env.DATABASE_URL,
 
 const app = express();
 
+app.use(cors());
+
 // header permettant d'accéder à l'API depuis n'importe où
 // ajoute les headers mentionnés aux requêtes envoyées vers l'API
 // envoie requête avec les méthodes GET, POST ...
@@ -32,9 +35,11 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use(express.json());    // pour gérer requète POST, donne le body des requêtes "application/json" sur req
-
+app.get('/', (req, res)=> {
+  res.status(200).json({message : "coucou"})
+});
 app.use('/api/event', eventRoutes);
-app.use('./api/auth', userRoutes);
+app.use('/api/auth', userRoutes);
 app.use('/api/defi', defiRoutes);
 app.use('/api/tips', tipsRoutes);
 app.use('/api/chat', chatRoutes);

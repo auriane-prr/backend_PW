@@ -17,7 +17,7 @@ exports.createEvent = (req, res, next) => {
   event.save().then(
     () => {
       res.status(201).json({
-        message: 'Event created successfully!'
+        message: "Event created successfully!"
       });
     }
   ).catch(
@@ -61,7 +61,7 @@ exports.modifyEvent = (req, res, next) => {
   Event.updateOne({_id: req.params.id}, event).then(
     () => {
       res.status(201).json({
-        message: 'Event updated successfully!'
+        message: "Event updated successfully!"
       });
     }
   ).catch(
@@ -79,7 +79,7 @@ exports.deleteEvent = (req, res, next) => {
   Event.deleteOne({_id: req.params.id}).then(
     () => {
       res.status(200).json({
-        message: 'Deleted!'
+        message: "Deleted!"
       });
     }
   ).catch(

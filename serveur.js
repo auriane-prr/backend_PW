@@ -1,23 +1,7 @@
 const http = require('http');
 const app = require('./app');
 
-
-
-// renvoie un port valide (numéro ou chaine)
-const normalizePort = val => {
-    const port = parseInt(val, 10);
-    if (isNaN(port)) {
-        return val;
-    }
-    if(port >= 0) {
-        return port;
-    }
-    return false;
-};
-
-const port = normalizePort(process.env.PORT || '3000');
-app.set('port', port);
-
+const port = process.env.PORT || 3500;
 
 // cherche et gère les différentes erreurs possibles
 const errorHandler = error => {
@@ -46,7 +30,7 @@ server.on('error', errorHandler);
 server.on('listenning', () => {
     const address = server.address();
     const bind = typeof adress === 'string' ? 'pipe' + adress : 'port' + port;
-    console.log('Listenning on' + bind);
+    console.log("Listenning on" + bind);
 })
 
-server.listen(port);
+server.listen(3500);

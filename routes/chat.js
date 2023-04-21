@@ -4,10 +4,10 @@ const router = express.Router();
 
 const chatCtrl = require('../controllers/chat');
 
-router.get('/', auth, chatCtrl.getAllChat);
-router.post('/', auth, chatCtrl.getAllChat);
-router.get('/:id',auth, chatCtrl.getAllChat);
-router.put('/:id',auth, chatCtrl.getAllChat);
-router.delete('/:id',auth, chatCtrl.getAllChat);
+router.get('/', chatCtrl.getAllChat);
+router.post('/', chatCtrl.createChat);
+router.get('/:id', chatCtrl.getOneChat);
+router.put('/:id', chatCtrl.modifyChat);
+router.delete('/:id', chatCtrl.deleteChat);
 
 module.exports = router;

@@ -4,10 +4,10 @@ const router = express.Router();
 
 const defiCtrl = require('../controllers/defi');
 
-router.get('/', auth, defiCtrl.getAllDefi);
-router.post('/', auth, defiCtrl.getAllDefi);
-router.get('/:id',auth, defiCtrl.getAllDefi);
-router.put('/:id',auth, defiCtrl.getAllDefi);
-router.delete('/:id',auth, defiCtrl.getAllDefi);
+router.get('/', defiCtrl.getAllDefi);
+router.post('/', defiCtrl.createDefi);
+router.get('/:id', defiCtrl.getOneDefi);
+router.put('/:id', defiCtrl.modifyDefi);
+router.delete('/:id', defiCtrl.deleteDefi);
 
 module.exports = router;

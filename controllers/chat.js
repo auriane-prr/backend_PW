@@ -9,7 +9,7 @@ exports.createChat = (req, res, next) => {
   chat.save().then(
     () => {
       res.status(201).json({
-        message: 'Chat created successfully!'
+        message: "Chat created successfully!"
       });
     }
   ).catch(
@@ -46,7 +46,7 @@ exports.modifyChat = (req, res, next) => {
   Chat.updateOne({_id: req.params.id}, chat).then(
     () => {
       res.status(201).json({
-        message: 'Chat updated successfully!'
+        message: "Chat updated successfully!"
       });
     }
   ).catch(
@@ -63,7 +63,7 @@ exports.deleteChat = (req, res, next) => {
   Chat.deleteOne({_id: req.params.id}).then(
     () => {
       res.status(200).json({
-        message: 'Deleted!'
+        message: "Deleted!"
       });
     }
   ).catch(
