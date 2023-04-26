@@ -5,7 +5,7 @@ exports.createTips = (req, res, next) => {
   const tips = new Tips({
     num_tips: req.body.num_tips,
     nom_tips: req.body.nom_tips,
-    description: req.body.description,   
+    description: req.body.description,
   });
   tips.save().then(
     () => {

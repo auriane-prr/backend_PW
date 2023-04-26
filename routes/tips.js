@@ -10,4 +10,5 @@ router.get('/:id', tipsCtrl.getOneTips);
 router.put('/:id', tipsCtrl.modifyTips);
 router.delete('/:id', tipsCtrl.deleteTips);
 
+
 module.exports = router;
