@@ -1,6 +1,6 @@
 const Tips = require('../models/tips');
 
-// if user.Admin == true
+/* if user.Admin == true
 exports.createTips = (req, res, next) => {
   const tips = new Tips({
     num_tips: req.body.num_tips,
@@ -21,6 +21,19 @@ exports.createTips = (req, res, next) => {
     }
   );
 };
+*/
+
+exports.createTips = ('/add-tip', async (req, res) => {
+  const { num_tips, nom_tips, description } = req.body;
+  const newTips = new Tips({ num_tips, nom_tips, description });
+  try {
+    await newTips.save();
+    res.send('Tips added successfully!');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error adding tips!');
+  }
+});
 
 exports.getOneTips = (req, res, next) => {
   Tips.findOne({
