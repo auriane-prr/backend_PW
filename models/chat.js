@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const chatSchema = mongoose.Schema({
-  id_chat: { type: Number, required: true },
   participants: {type: Array, required: true },
   texte: { type: String, required: true },
   eventcorr: { type: String, required : true},

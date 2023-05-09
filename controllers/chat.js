@@ -3,10 +3,9 @@ const Chat = require('../models/chat');
 // if user.Admin == true
 exports.createChat = (req, res, next) => {
   const chat = new Chat({
-    id_chat: 1,
-    texte: "salut, je voulais savoir si t'étais dispo la semaine prochaine ?",
-    participants: ["Aline", "Maurice", "Georges"],
-    eventcorr: "nom_event"
+    texte: req.body.texte,
+    participants: req.body.participants,
+    eventcorr: req.body.eventcorr
   });
   chat.save().then(
     () => {
@@ -42,7 +41,6 @@ exports.getOneChat = (req, res, next) => {
 // if user.Admin == true
 exports.modifyChat = (req, res, next) => {
   const chat = new Chat({
-    id_chat: req.body.id_chat,
     texte: req.body.texte, 
     participants: req.body.participants,
     eventcorr: req.body.eventcorr

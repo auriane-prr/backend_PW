@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const defiSchema = mongoose.Schema({
-  num_defi: { type: Number, required: true },
   nom_defi: { type: String, required: true },
   date_deb: { type: Date, required: true },
   date_fin: { type: Date, required: true },

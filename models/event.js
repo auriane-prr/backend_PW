@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const eventSchema = mongoose.Schema({
-  num_event: { type: Number, required: true },
   nom_event: { type: String, required: true },
   adresse: { type: String, required: true},
   place: {type: String, required: true },

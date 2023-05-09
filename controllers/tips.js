@@ -24,8 +24,8 @@ exports.createTips = (req, res, next) => {
 */
 
 exports.createTips = ('/add-tip', async (req, res) => {
-  const { num_tips, nom_tips, description } = req.body;
-  const newTips = new Tips({ num_tips, nom_tips, description });
+  const { nom_tips, description } = req.body;
+  const newTips = new Tips({nom_tips, description });
   try {
     await newTips.save();
     res.send('Tips added successfully!');
@@ -54,7 +54,6 @@ exports.getOneTips = (req, res, next) => {
 // if user.Admin == true
 exports.modifyTips = (req, res, next) => {
   const tips = new Tips({
-    num_tips: req.body.num_tips,
     nom_tips: req.body.nom_tips,
     description: req.body.description, 
   });

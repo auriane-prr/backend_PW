@@ -3,7 +3,6 @@ const Event = require('../models/event');
 // if user.Admin == true
 exports.createEvent = (req, res, next) => {
   const event = new Event({
-    num_event: req.body.num_event,
     nom_event: req.body.nom_event,
     adresse: req.body.adresse,
     place: req.body.place,
@@ -48,7 +47,6 @@ exports.getOneEvent = (req, res, next) => {
 // if user.Admin == true
 exports.modifyEvent = (req, res, next) => {
   const event = new Event({
-    num_event: req.body.num_event,
     nom_event: req.body.nom_event,
     adresse: req.body.adresse,
     place: req.body.place,

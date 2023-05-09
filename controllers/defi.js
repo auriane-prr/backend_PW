@@ -3,7 +3,6 @@ const Defi = require('../models/defi');
 // if user.Admin == true
 exports.createDefi = (req, res, next) => {
   const defi = new Defi({
-    num_defi: req.body.num_defi,
     nom_defi: req.body.nom_defi,
     date_deb: req.body.date_deb,
     date_fin: req.body.date_fin,
@@ -44,7 +43,6 @@ exports.getOneDefi = (req, res, next) => {
 // if user.Admin == true
 exports.modifyDefi = (req, res, next) => {
   const defi = new Defi({
-    num_defi: req.body.num_defi,
     nom_defi: req.body.nom_defi,
     date_deb: req.body.date_deb,
     date_fin: req.body.date_fin,
