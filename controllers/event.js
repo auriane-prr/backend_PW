@@ -5,12 +5,9 @@ exports.createEvent = (req, res, next) => {
   const event = new Event({
     nom_event: req.body.nom_event,
     adresse: req.body.adresse,
-    place: req.body.place,
-    date_deb: req.body.date_deb,
-    date_fin: req.body.date_fin,
+    date: req.body.date,
     description: req.body.description,
     point: req.body.point,
-    link:req.body.link,
     
   });
   event.save().then(
@@ -49,12 +46,9 @@ exports.modifyEvent = (req, res, next) => {
   const event = new Event({
     nom_event: req.body.nom_event,
     adresse: req.body.adresse,
-    place: req.body.place,
-    date_deb: req.body.date_deb,
-    date_fin: req.body.date_fin,
+    date: req.body.date,
     description: req.body.description,
     point: req.body.point,
-    link:req.body.link,
   });
   Event.updateOne({_id: req.params.id}, event).then(
     () => {
