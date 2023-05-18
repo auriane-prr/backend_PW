@@ -65,21 +65,23 @@ exports.modifyDefi = (req, res, next) => {
 };
 
 exports.deleteDefi = (req, res, next) => {
-
-    // if date_fin >= current date => delete
-  Defi.deleteOne({_id: req.params.id}).then(
-    () => {
+  const supp_defi = req.params.nom_defi;
+  Defi.findOneAndDelete({ nom_defi: supp_defi })
+    .then((deletedDefi) => {
+      if (!deletedDefi) {
+        return res.status(404).json({
+          message: "Defi not found"
+        });
+      }
       res.status(200).json({
         message: "Deleted!"
       });
-    }
-  ).catch(
-    (error) => {
+    })
+    .catch(error => {
       res.status(400).json({
         error: error
       });
-    }
-  );
+    });
 };
 
 exports.getAllDefi = (req, res, next) => {

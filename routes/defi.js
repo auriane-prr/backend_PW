@@ -8,6 +8,6 @@ router.get('/', defiCtrl.getAllDefi);
 router.post('/', defiCtrl.createDefi);
 router.get('/:id', defiCtrl.getOneDefi);
 router.put('/:id', defiCtrl.modifyDefi);
-router.delete('/:id', defiCtrl.deleteDefi);
+router.delete('/:nom_defi', defiCtrl.deleteDefi);
 
 module.exports = router;

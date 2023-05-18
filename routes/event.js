@@ -7,7 +7,7 @@ const eventCtrl = require('../controllers/event');
 router.get('/', eventCtrl.getAllEvent);
 router.post('/', eventCtrl.createEvent);
 router.get('/:id', eventCtrl.getOneEvent);
-router.put('/:id', eventCtrl.modifyEvent);
-router.delete('/:id', eventCtrl.deleteEvent);
+router.put('/:nom_event', eventCtrl.modifyEvent);
+router.delete('/:nom_event', eventCtrl.deleteEvent);
  
 module.exports = router;

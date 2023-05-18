@@ -74,19 +74,23 @@ exports.modifyTips = (req, res, next) => {
 };
 
 exports.deleteTips = (req, res, next) => {
-  Tips.deleteOne({_id: req.params.id}).then(
-    () => {
+  const supp_tips = req.params.nom_tips;
+  Tips.findOneAndDelete({ nom_tips: supp_tips })
+    .then((deletedTips) => {
+      if (!deletedTips) {
+        return res.status(404).json({
+          message: "Tips not found"
+        });
+      }
       res.status(200).json({
         message: "Deleted!"
       });
-    }
-  ).catch(
-    (error) => {
+    })
+    .catch(error => {
       res.status(400).json({
         error: error
       });
-    }
-  );
+    });
 };
 
 exports.getAllTips = (req, res, next) => {

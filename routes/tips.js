@@ -8,7 +8,7 @@ router.get('/', tipsCtrl.getAllTips);
 router.post('/', tipsCtrl.createTips);
 router.get('/:id', tipsCtrl.getOneTips);
 router.put('/:id', tipsCtrl.modifyTips);
-router.delete('/:id', tipsCtrl.deleteTips);
+router.delete('/:nom_tips', tipsCtrl.deleteTips);
 
 
 module.exports = router;

@@ -42,32 +42,45 @@ exports.getOneEvent = (req, res, next) => {
 
 // if user.Admin == true
 exports.modifyEvent = (req, res, next) => {
-  const event = new Event({
+  const nom_event = req.params.nom_event;
+
+  const updatedEvent = {
     nom_event: req.body.nom_event,
     adresse: req.body.adresse,
     date: req.body.date,
     description: req.body.description,
-    point: req.body.point,
-  });
-  Event.updateOne({_id: req.params.id}, event).then(
-    () => {
-      res.status(201).json({
+    point: req.body.point
+  };
+
+  delete req.body.nom_event;
+
+  Event.findOneAndUpdate({ nom_event: nom_event }, req.body, { new: true })
+    .then(updatedEvent => {
+      if (!updatedEvent) {
+        return res.status(404).json({
+          message: "Event not found"
+        });
+      }
+      res.status(200).json({
         message: "Event updated successfully!"
       });
-    }
-  ).catch(
-    (error) => {
+    })
+    .catch(error => {
       res.status(400).json({
         error: error
       });
-    }
-  );
+    });
 };
 
 exports.deleteEvent = (req, res, next) => {
-  const nom_event = req.params.nom_event;
-  Event.findOneAndDelete({ nom_event: nom_event })
-    .then(() => {
+  const supp_event = req.params.nom_event;
+  Event.findOneAndDelete({ nom_event: supp_event })
+    .then((deletedEvent) => {
+      if (!deletedEvent) {
+        return res.status(404).json({
+          message: "Event not found"
+        });
+      }
       res.status(200).json({
         message: "Deleted!"
       });
