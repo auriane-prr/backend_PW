@@ -9,5 +9,5 @@ router.post('/', eventCtrl.createEvent);
 router.get('/:id', eventCtrl.getOneEvent);
 router.put('/:id', eventCtrl.modifyEvent);
 router.delete('/:id', eventCtrl.deleteEvent);
-
+ 
 module.exports = router;

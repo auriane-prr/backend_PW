@@ -5,6 +5,7 @@ const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const jwtMiddleware = require('./middleware/auth');
 
 const tipsRoutes = require('./routes/tips');
 const eventRoutes = require('./routes/event');
@@ -21,6 +22,9 @@ mongoose.connect(process.env.DATABASE_URL,
 const app = express();
 
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.json()); 
 
 // header permettant d'accéder à l'API depuis n'importe où
 // ajoute les headers mentionnés aux requêtes envoyées vers l'API
@@ -33,13 +37,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(bodyParser.json());
-app.use(express.json());    // pour gérer requète POST, donne le body des requêtes "application/json" sur req
-app.get('/', (req, res)=> {
-  res.status(200).json({message : "coucou"})
-});
 app.use('/api/event', eventRoutes);
-app.use('/api/auth', userRoutes);
+// app.use('/api/auth', userRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/defi', defiRoutes);
 app.use('/api/tips', tipsRoutes);
 app.use('/api/chat', chatRoutes);

@@ -8,7 +8,6 @@ exports.createEvent = (req, res, next) => {
     date: req.body.date,
     description: req.body.description,
     point: req.body.point,
-    
   });
   event.save().then(
     () => {
@@ -66,22 +65,20 @@ exports.modifyEvent = (req, res, next) => {
 };
 
 exports.deleteEvent = (req, res, next) => {
-
-    // if date_fin >= current date => delete
-  Event.deleteOne({_id: req.params.id}).then(
-    () => {
+  const nom_event = req.params.nom_event;
+  Event.findOneAndDelete({ nom_event: nom_event })
+    .then(() => {
       res.status(200).json({
         message: "Deleted!"
       });
-    }
-  ).catch(
-    (error) => {
+    })
+    .catch(error => {
       res.status(400).json({
         error: error
       });
-    }
-  );
+    });
 };
+
 
 exports.getAllEvent = (req, res, next) => {
   Event.find().then(
