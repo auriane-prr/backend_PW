@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const tipsSchema = mongoose.Schema({
-  nom_tips: { type: String, required: true },
+  nom_tips: { type: String, required: true, unique: true },
   description: { type: String, required: true },
   image: {type: String},
 });

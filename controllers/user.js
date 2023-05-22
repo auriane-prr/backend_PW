@@ -1,66 +1,3 @@
-// const bcrypt = require('bcrypt');
-// const User = require('../models/user');
-// const jwt = require('jsonwebtoken');
-
-// exports.signup = (req, res, next) => {
-  
-//   bcrypt.hash(req.body.password, 10)
-//     .then(hash => {
-//       const user = new User({
-//         email: req.body.email,
-//         password: hash,
-//         pseudo: req.body.pseudo,
-//         loc: req.body.loc,
-//       });
-
-//       user.save()
-//         .then(() => {
-//           res.status(201).json({ message: "Utilisateur créé" });
-//         })
-//         .catch(error => {
-//           res.status(400).json({ message: "Erreur lors de la création de l'utilisateur", error: error });
-//         });
-//     })
-//     .catch(error => {
-//       res.status(500).json({ message: "Erreur lors du hachage du mot de passe", error: error });
-//     });
-// };
-
-// exports.login = (req, res, next) => {
-//     User.findOne({email: req.body.email})
-//     .then(user => {
-//         if (!user) {
-//             return res.status(401).json({ message: "Paire login/mot de passe incorrecte (user)"}); // si utilisateur pas dans bd
-//         }
-//         else {
-//         bcrypt.compare(req.body.password, user.password)    //compare mdp entré par le user avec le hash enregistré dans bd
-//             .then(valid => {
-//                 if (!valid) {
-//                     return res.status(401).json({ message: "Paire login/mot de passe incorrecte (valid)" });
-//                 }
-//                 const token = jwt.sign(
-//                   { userId: user._id },
-//                   process.env.JWT_SECRET,
-//                   { expiresIn: '24h' }
-//                 );
-      
-//                 res.status(200).json({
-//                   message: "Connexion réussie !",
-//                   userId: user._id,
-//                   token: token
-//                 });
-//               })
-//               .catch(error => {
-//                 res.status(500).json({ message: "Erreur lors de la comparaison du mot de passe", error: error });
-//               });
-//           }})
-//           .catch(error => {
-//             res.status(500).json({ message: "Erreur lors de la recherche de l'utilisateur", error: error });
-//           });
-//       };
-
-// CHATGPT
-
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
@@ -114,4 +51,20 @@ async function login(req, res) {
   }
 }
 
-module.exports = { signup, login };
+async function getUser(req, res) {
+  try {
+    const userEmail = req.params.email;
+
+    // Rechercher l'utilisateur dans la base de données
+    const user = await User.findOne({ email: userEmail });
+    if (!user) {
+      return res.status(404).json({ message: 'Utilisateur non trouvé' });
+    }
+
+    res.json({ user });
+  } catch (error) {
+    res.status(500).json({ message: 'Une erreur s\'est produite lors de la récupération des données utilisateur', error });
+  }
+}
+
+module.exports = { signup, login, getUser };

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const defiSchema = mongoose.Schema({
-  nom_defi: { type: String, required: true },
+  nom_defi: { type: String, required: true, unique: true },
   date_deb: { type: Date, required: true },
   date_fin: { type: Date, required: true },
   description: { type: String, required: true },
