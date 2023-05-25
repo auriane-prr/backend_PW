@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     
-    "dev": "nodemon serveur.js",
+    "dev": "node serveur.js",
     "debug": "nodemon --inspect app.js"
   },
   "author": "",
