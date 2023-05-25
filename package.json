@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "nodemon": "^2.0.22",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
@@ -20,9 +21,6 @@
     "mongoose": "^7.2.1",
     "mongoose-unique-validator": "^4.0.0",
     "whatwg-url": "^12.0.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.22"
   },
   "engines": {
     "node": "^14.20.1"
