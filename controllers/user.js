@@ -43,7 +43,7 @@ async function login(req, res) {
     }
 
     // Générer un token d'authentification
-    const token = jwt.sign({ userId: user._id }, 'secret_key', { expiresIn: '1h' });
+    const token = jwt.sign({ email: user.email }, 'secret_key', { expiresIn: '1h' });
 
     res.json({ message: 'Connexion réussie', token });
   } catch (error) {
@@ -53,10 +53,10 @@ async function login(req, res) {
 
 async function getUser(req, res) {
   try {
-    const userEmail = req.params.email;
+    const email = req.params.email;
 
     // Rechercher l'utilisateur dans la base de données
-    const user = await User.findOne({ email: userEmail });
+    const user = await User.findOne({ email: email });
     if (!user) {
       return res.status(404).json({ message: 'Utilisateur non trouvé' });
     }

@@ -1,23 +1,3 @@
-// const jwt = require('jsonwebtoken');
-
-// module.exports = (req, res, next) => {
-//     try {
-//         const token = req.headers.authorization.split(' ')[1];  // isole partie du token que l'on veut récupérer
-//         const decodedToken = jwt.verify(token, process.env.JWT_SECRET);  // décode le token
-//         const userId = decodedToken.userId;
-//         req.auth = {
-//             userId: userId
-//         };
-//         next();  // Appel à la fonction next() pour passer au middleware suivant
-//     } catch (error) {
-//         res.status(401).json({ error: "Authentification requise" });
-//     }
-// };
-
-// CHATGPT
-
-// middleware/auth.js
-
 const jwt = require('jsonwebtoken');
 
 // Middleware pour vérifier l'authenticité du token
@@ -35,8 +15,14 @@ function authMiddleware(req, res, next) {
       return res.status(401).json({ message: 'Token d\'authentification invalide' });
     }
 
-    // Ajouter l'ID utilisateur décodé à l'objet de requête
-    req.userId = decoded.userId;
+    // Vérifier si l'e-mail est présent dans le token décodé
+    if (!decoded.email) {
+      return res.status(401).json({ message: 'Token d\'authentification invalide - email manquant' });
+    }
+
+    // Ajouter l'e-mail de l'utilisateur décodé à l'objet de requête
+    req.userEmail = decoded.email;
+    console.log(decoded);
 
     // Passer au middleware suivant
     next();
