@@ -1,6 +1,6 @@
 const Event = require('../models/event');
 
-// if user.Admin == true
+
 exports.createEvent = (req, res, next) => {
   const event = new Event({
     nom_event: req.body.nom_event,
