@@ -45,7 +45,7 @@ async function login(req, res) {
     // Générer un token d'authentification
     const token = jwt.sign({ email: user.email }, 'secret_key', { expiresIn: '1h' });
 
-    res.json({ message: 'Connexion réussie', token });
+    res.json({ message: 'Connexion réussie', token, email: user.email });
   } catch (error) {
     res.status(500).json({ message: 'Une erreur s\'est produite lors de la connexion', error });
   }

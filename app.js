@@ -11,7 +11,6 @@ const tipsRoutes = require('./routes/tips');
 const eventRoutes = require('./routes/event');
 const userRoutes = require('./routes/user');
 const defiRoutes = require('./routes/defi');
-const imageRoutes = require('./routes/image');
 
 mongoose.connect(process.env.DATABASE_URL,
   { useNewUrlParser: true,
@@ -41,6 +40,5 @@ app.use('/api/event', eventRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/defi', defiRoutes);
 app.use('/api/tips', tipsRoutes);
-app.use('/api/image', imageRoutes);
 
 module.exports = app;

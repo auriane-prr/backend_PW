@@ -10,6 +10,7 @@ function authMiddleware(req, res, next) {
   }
 
   // Vérifier le token
+  console.log(token);
   jwt.verify(token, 'secret_key', (err, decoded) => {
     if (err) {
       return res.status(401).json({ message: 'Token d\'authentification invalide' });
