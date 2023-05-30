@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
+
 // Fonction d'inscription d'un nouvel utilisateur
 async function signup(req, res) {
   try {
@@ -53,7 +54,8 @@ async function login(req, res) {
 
 async function getUser(req, res) {
   try {
-    const email = req.params.email;
+    const decodedEmail = decodeURIComponent(req.params.email);
+    const email = decodedEmail;
 
     // Rechercher l'utilisateur dans la base de données
     const user = await User.findOne({ email: email });

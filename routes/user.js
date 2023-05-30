@@ -9,6 +9,6 @@ router.post('/login', userController.login);
 router.get('/protected', authMiddleware, (req, res) => {
   res.json({ message: 'Accès autorisé à la ressource protégée' });
 });
-router.get('/:email', authMiddleware, userController.getUser);
+router.get('/:email', userController.getUser);
 
 module.exports = router;
